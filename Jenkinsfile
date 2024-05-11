@@ -1,76 +1,93 @@
 pipeline {
     agent any
-    environment {
-        DIRECTORY_PATH = "/path/to/code/directory"
-        TESTING_ENVIRONMENT = "TestingEnvironment"
-        PRODUCTION_ENVIRONMENT = "YourNameProduction"
-    }
+    
     stages {
         stage('Build') {
             steps {
-                script {
-                    echo "Fetching the source code from the directory path specified by the environment variable: ${env.DIRECTORY_PATH}"
-                    echo "Compiling the code and generating any necessary artifacts"
-                }
+                echo 'Building the code using Maven...'
+                // Task: Build the code using Maven
+                // Maven commands or build scripts can be added here
             }
         }
-        stage('Unit and Integration Test') {
+        
+        stage('Unit and Integration Tests') {
             steps {
-                script {
-                    echo "Running unit tests..."
-                    echo "Running integration tests..."
+                echo 'Running unit tests...'
+                // Task: Run unit tests
+                // Commands to execute unit tests can be added here
+                
+                echo 'Running integration tests...'
+                // Task: Run integration tests
+                // Commands to execute integration tests can be added here
+            }
+            post {
+                success {
+                    emailext attachLog: true,
+                    body: 'Unit and integration tests passed.',
+                    subject: 'Test Success',
+                    to: 'itsmyemail1228@gmail.com'
+                }
+                failure {
+                    emailext attachLog: true,
+                    body: 'Unit and integration tests failed.',
+                    subject: 'Test Failure',
+                    to: 'itsmyemail1228@gmail.com'
                 }
             }
         }
+        
         stage('Code Analysis') {
             steps {
-                script {
-                    echo "Checking the quality of the code..."
-                }
+                echo 'Analyzing code using SonarQube...'
+                // Task: Integrate a code analysis tool (e.g., SonarQube)
+                // Commands to trigger code analysis with SonarQube can be added here
             }
         }
+        
         stage('Security Scan') {
             steps {
-                script {
-                    echo "Deploying the application to a testing environment specified by the environment variable: ${env.TESTING_ENVIRONMENT}"
+                echo 'Performing security scan...'
+                // Task: Perform a security scan on the code (e.g., SonarQube Security Plugin)
+                // Commands to trigger security scan can be added here
+            }
+            post {
+                success {
+                    emailext attachLog: true,
+                    body: 'Security scan passed',
+                    subject: 'Security Scan Success',
+                    to: 'itsmyemail1228@gmail.com'
+                }
+                failure {
+                    emailext attachLog: true,
+                    body: 'Security vulnerabilities found',
+                    subject: 'Security Scan Failure',
+                    to: 'itsmyemail1228@gmail.com'
                 }
             }
         }
+        
         stage('Deploy to Staging') {
             steps {
-                script {
-                    echo "Waiting for approval..."
-                    sleep time: 10, unit: 'SECONDS'
-                }
+                echo 'Deploying the application to staging server...'
+                // Task: Deploy the application to a staging server (e.g., AWS EC2 instance)
+                // Commands to deploy to staging server can be added here
             }
         }
+        
         stage('Integration Tests on Staging') {
             steps {
-                script {
-                    echo "Deploying the code to the production environment (${env.PRODUCTION_ENVIRONMENT})..."
-                }
+                echo 'Running integration tests on staging environment...'
+                // Task: Run integration tests on the staging environment
+                // Commands to execute integration tests on staging can be added here
             }
         }
+        
         stage('Deploy to Production') {
             steps {
-                script {
-                    echo "Deploying the code to the production environment (${env.PRODUCTION_ENVIRONMENT})..."
-                }
+                echo 'Deploying the application to production server...'
+                // Task: Deploy the application to a production server (e.g., AWS EC2 instance)
+                // Commands to deploy to production server can be added here
             }
-        }
-    }
-    post {
-        success {
-            emailext body: "Build successful",
-                subject: "Pipeline Success",
-                to: "wali.walimahesh16@gmail.com"
-            echo 'Pipeline execution successful!'
-        }
-        failure {
-            emailext body: "Build failed",
-                subject: "Pipeline Failure",
-                to: "wali.walimahesh16@gmail.com"
-            echo 'Pipeline execution failed!'
         }
     }
 }
