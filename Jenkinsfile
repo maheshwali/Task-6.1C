@@ -25,13 +25,13 @@ pipeline {
                     emailext attachLog: true,
                     body: 'Unit and integration tests passed.',
                     subject: 'Test Success',
-                    to: 'itsmyemail1228@gmail.com'
+                    to: 'wali.walimahesh16@gmail.com'
                 }
                 failure {
                     emailext attachLog: true,
                     body: 'Unit and integration tests failed.',
                     subject: 'Test Failure',
-                    to: 'itsmyemail1228@gmail.com'
+                    to: 'wali.walimahesh16@gmail.com'
                 }
             }
         }
@@ -55,13 +55,13 @@ pipeline {
                     emailext attachLog: true,
                     body: 'Security scan passed',
                     subject: 'Security Scan Success',
-                    to: 'itsmyemail1228@gmail.com'
+                    to: 'wali.walimahesh16@gmail.com'
                 }
                 failure {
                     emailext attachLog: true,
                     body: 'Security vulnerabilities found',
                     subject: 'Security Scan Failure',
-                    to: 'itsmyemail1228@gmail.com'
+                    to: 'wali.walimahesh16@gmail.com'
                 }
             }
         }
