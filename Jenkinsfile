@@ -2,6 +2,12 @@ pipeline {
     agent any
     
     stages {
+        stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'your-credentials-id', url: 'your-git-repo-url'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building the code using Maven...'
