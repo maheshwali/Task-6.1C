@@ -9,8 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    echo 'Building the project...'
-                    // Specify your build automation tool here
+                    echo 'Building the project'
                     echo 'Using Maven to build the project.'
                 }
             }
@@ -19,8 +18,7 @@ pipeline {
         stage('Unit and Integration Tests') {
             steps {
                 script {
-                    echo 'Running unit and integration tests...'
-                    // Specify your test automation tool here
+                    echo 'Running unit and integration tests'
                     echo 'Using JUnit for unit tests and Selenium for integration tests.'
                 }
             }
@@ -29,8 +27,7 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 script {
-                    echo 'Analyzing the code...'
-                    // Specify your code analysis tool here
+                    echo 'Analyzing the code'
                     echo 'Using SonarQube for code analysis.'
                 }
             }
@@ -39,8 +36,7 @@ pipeline {
         stage('Security Scan') {
             steps {
                 script {
-                    echo 'Performing security scan...'
-                    // Specify your security scan tool here
+                    echo 'Performing security scan'
                     echo 'Using OWASP Dependency-Check for security scanning.'
                 }
             }
@@ -60,8 +56,7 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 script {
-                    echo 'Deploying to staging...'
-                    // Specify your deployment tool here
+                    echo 'Deploying to staging'
                     echo 'Using AWS CLI to deploy to an AWS EC2 instance.'
                 }
             }
@@ -70,8 +65,7 @@ pipeline {
         stage('Integration Tests on Staging') {
             steps {
                 script {
-                    echo 'Running integration tests on staging...'
-                    // Specify your staging integration tests tool here
+                    echo 'Running integration tests on staging'
                     echo 'Using Selenium for integration tests on staging.'
                 }
             }
@@ -80,8 +74,7 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 script {
-                    echo 'Deploying to production...'
-                    // Specify your deployment tool here
+                    echo 'Deploying to production'
                     echo 'Using AWS CLI to deploy to an AWS EC2 instance.'
                 }
             }
